@@ -1,0 +1,10 @@
+pdf2image
+img2pdf
+pdf2docx
+librosa
+numpy
+scipy
+youtube-dl
+pydub
+pandas
+PdfFileMerger
