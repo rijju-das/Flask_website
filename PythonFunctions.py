@@ -94,3 +94,22 @@ def mergePDF(pdfs):
 
 	merger.write("MergedPDF.pdf")
 	merger.close()
+ 
+from PyPDF2 import PdfFileWriter, PdfFileReader
+def PDFsplitter(filepath):
+	inputpdf = PdfFileReader(open(filepath, "rb"))
+	outputfolder=filepath[:filepath.rindex('.')]+'/'
+	for i in range(inputpdf.numPages):
+		output = PdfFileWriter()
+		output.addPage(inputpdf.getPage(i))
+		with open(outputfolder+"document-page%s.pdf" % i, "wb") as outputStream:
+			output.write(outputStream)
+			
+        
+        
+        
+        
+        
+        
+        
+        
