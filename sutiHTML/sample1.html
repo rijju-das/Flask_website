@@ -136,6 +136,22 @@ li a:hover:not(.active) {
  <div class="companyTitle">
   Fast Converter
   </div>
-{% block body %}
-{% endblock %}
+<center>
+<body class="backgroundImage">
+ 
+<p>Click on the "Choose File" button to upload a file:</p>
+
+<form action="http://127.0.0.1:5000/" class= 'center' method="post" enctype="multipart/form-data">
+  <input type="file" id="file" name="file" class="btn">
+  <input type="submit" class ='button'>
+</form>
+{% with messages=get_flashed_messages(with_categories=true) %}
+ <!-- {% for category, message in messages %} -->
+  <div class='center' id="msg">
+    {{ message }}
+   </div>
+ <!-- {% endfor %} -->
+{% endwith %}
+</center>
+</body>
 </html>
