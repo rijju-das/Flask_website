@@ -5,17 +5,18 @@
 <p>Click on the "Choose File" button to upload a file:</p>
 
 <form action="http://127.0.0.1:5000/" class= 'center' method="post" enctype="multipart/form-data">
-  <input type="file" id="file" name="file" class="btn">
+  <input type="file" id="file" name="file" class="btn" multiple>
   <input type="submit" class ='button'>
 </form>
 
-{% with messages=get_flashed_messages(with_categories=true) %}
-
+{% with messages=get_flashed_messages() %}
+{% if messages %}
   <div class='center' id="msg">
     {% for category, message in messages %}
     {{ message }}
     {% endfor %}
    </div>
+{% endif %}
 {% endwith %}
 </center>
 </body>

@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from flask import send_from_directory
 
+
 UPLOAD_FOLDER = 'uploaded_file/'
 
 
@@ -14,8 +15,9 @@ app = Flask(__name__,template_folder='C:/Users/rijju/Documents/GitHub/Flask/suti
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
 
+
 @app.route('/', methods=['POST','GET'])
-def index():
+def upload():
     if request.method == 'POST':
       f = request.files['file']
       filename=secure_filename(f.filename)
@@ -31,8 +33,9 @@ def index():
 
 @app.route("/download/<filename>", methods = ['GET'])
 def download(filename):
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
     # return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
-    return render_template('download.html',value=filename)
+    return render_template('download.html',value=filename,f_list=files)
 
 
 @app.route("/download_file/<filename>", methods= ['GET'])
