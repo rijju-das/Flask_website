@@ -7,5 +7,4 @@ scipy
 youtube-dl
 pydub
 pandas
-PdfFileMerger
 PyPDF2

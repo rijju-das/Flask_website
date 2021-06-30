@@ -5,6 +5,7 @@ from flask import *
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from flask import send_from_directory
+from PythonFunctions import PythonFunctions
 
 
 UPLOAD_FOLDER = 'uploaded_file/'
@@ -16,6 +17,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
 
 
+
+ 
+
 @app.route('/', methods=['POST','GET'])
 def upload():
     if request.method == 'POST':
@@ -25,8 +29,13 @@ def upload():
           flash('No file selected')
       if filename:
           f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-          return redirect(url_for('download',filename=filename))
-    
+          filepath=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+          print('filepath '+ filepath)
+          outputfilepath= PythonFunctions.pdfToImage(filepath)
+        #   outputfilepath=outputfilepath.replace('uploaded_file/', '')
+          print('output filepath '+ outputfilepath)
+          return redirect(url_for('download',filename=outputfilepath))
+
     return render_template('upload_page.html')
 
 
