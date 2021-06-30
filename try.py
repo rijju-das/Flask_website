@@ -9,8 +9,8 @@ from flask import send_from_directory
 
 UPLOAD_FOLDER = 'uploaded_file/'
 
-
-app = Flask(__name__,template_folder='C:/Users/rijju/Documents/GitHub/Flask/sutiHTML/')
+# app = Flask(__name__,template_folder='C:/Users/rijju/Documents/GitHub/Flask/sutiHTML/')
+app = Flask(__name__,template_folder='C:/Users/sutir/Documents/GitHub/Flask_website/sutiHTML/')
 # run_with_ngrok(app)  # Start ngrok when app is run
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
